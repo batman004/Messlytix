@@ -1,0 +1,88 @@
+
+{% extends "layout.html" %}
+{% block content %}
+<body data-spy="scroll" data-target="#myScrollspy" data-offset="80">
+  <section id="section-1">
+
+    <!-- Navbar-->
+    <nav class="navbar navbar-expand-xl fixed-top" style="height:100px" id="myScrollspy">
+
+      <!-- name -->
+      <a class="navbar-brand" href="#section-1">
+        <img src="../static/assets/img/logo-navbar.png" alt="random" style="width: 4rem;">
+      </a>
+
+      <!-- toggler -->
+      <button class="xyz navbar-toggler custom-toggler" type="button" data-toggle="collapse"
+        data-target="#navbarSupportedContent " aria-controls="navbarSupportedContent" aria-expanded="false"
+        aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- List Items -->
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav nav-pills">
+          <li class="nav-item mx-auto" data-toggle="collapse" data-target=".navbar-collapse">
+            <a class="xyz nav-link mx-4 mt-2" href="#section-1">Home</a>
+          </li>
+          <li class="nav-item mx-auto" data-toggle="collapse" data-target=".navbar-collapse">
+            <a class="nav-link mx-4 mt-2" href="#section-2">Benefits</a>
+          </li>
+
+
+          </li>
+        </ul>
+      </div>
+
+    </nav>
+
+  </section>
+
+  <section id="section-1">
+    <div class="container">
+      <h1 class="heading-top">Messlytix</h1>
+      <div class="row">
+        <div class="col-lg-8">
+          <h2 class="head-text" style="margin-bottom:30px;">The mess analytics tool for detailed real-time ML-based
+            analytics to minimize your food wastages and managing attendance.</h2>
+          <a href="{{url_for('choose')}}">
+            <button class="login">
+              Login
+            </button>
+          </a>
+          <a href="{{url_for('signup')}}">
+            <button class="login">
+              Sign Up
+            </button>
+          </a>
+        </div>
+        <div class="img-fluid col-lg-4">
+          <img src="../static/assets/img/home-img.png" alt="random" style="margin-top: -18rem;">
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="section-2">
+    <div class="container">
+      <h1 class="heading">Benefits</h1>
+      <div class="row">
+        <div class="col-lg-6" style="margin-left: 0;">
+          <ul>
+            <li>Get ML-based predictions to optimize your food procurement and limit food wastage.</li>
+            <li>Get live-attendance updates through student check-ins.</li>
+            <li>Get detailed statistics on your food procurement and wastage.</li>
+            <li>Incentivize your mess with rich menu tracking and feedback.</li>
+          </ul>
+        </div>
+        <div class="img-fluid col-lg-6">
+          <img src="../static/assets/img/graph-img.png" alt="random" style="width: max-content;">
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</body>
+{% endblock content %}

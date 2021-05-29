@@ -1,0 +1,122 @@
+{% extends "layout.html" %}
+{% block content %}
+<script>
+  window.onload = setInterval(clock,1000);
+function clock()
+{
+   var d = new Date();
+   var date = d.getDate();
+   var year = d.getFullYear();
+   var month = d.getMonth();
+   var monthArr = ["January", "February","March", "April", "May", "June", "July", "August", "September", "October", "November","December"];
+   month = monthArr[month];
+   document.getElementById("datetime").innerHTML=date+" "+month+", "+year+".";
+}
+$('#myModal').on('shown.bs.modal', function () {
+  $('#myInput').trigger('focus')
+})
+</script>
+<body  data-spy="scroll" data-target="#myScrollspy" data-offset="80" style="text-align: center;">
+
+  <section id="section-1">
+
+    <!-- Navbar-->
+    <nav class="navbar navbar-expand-xl fixed-top" style="height:100px" id="myScrollspy">
+
+      <!-- name -->
+      <a class="navbar-brand" href="#section-1">
+        <img class="fluid" src="../static/assets/img/logo-navbar.png" style="height: 5rem;">
+      </a>
+
+      {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <ul class=flashes>
+        {% for category, message in messages %}
+          <li class="{{ category }}">{{ message }}</li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+      {% endwith %}
+
+      <!-- toggler -->
+      <button class="xyz navbar-toggler custom-toggler" type="button" data-toggle="collapse"
+        data-target="#navbarSupportedContent " aria-controls="navbarSupportedContent" aria-expanded="false"
+        aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- List Items -->
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <h2 style="margin-right:35.5rem">ATTENDANCE</h2>
+        <ul class="navbar-nav ml-auto nav-pills">
+          <li class="nav-item mx-auto" data-toggle="collapse" data-target=".navbar-collapse">
+            <button type="button" class="feedback" data-toggle="modal" data-target="#exampleModal">
+              Feedback
+            </button>
+          </li>
+        </ul>
+    </nav>
+    <form action="{{url_for('feedback')}}" method='post'>
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel" style="color:black">Tell us so we can improve!</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form action="{{url_for('submitfeedback')}}">
+          <div class="modal-body">
+             <textarea style="width:80%;height:100%" name="feedback"></textarea>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary" type="submit">Save changes</button>
+          </div>
+        </form>
+        </div>
+      </div>
+    </div>
+  </form>
+
+  </section>
+  <section id="section-2">
+    <div class="text-left ml-3">
+        <p class="heading-top-student" style="margin-top: 60px; margin-bottom: 0px;padding-bottom: 0px; text-align:center;">
+          Hello Student!
+        </p>
+        <div style="text-align: center;">
+          <span class="head-text" >Today is </span><span class="head-text" id="datetime"></span>
+        </div>
+        
+    </div>
+</section>
+
+            
+      <div class="pricing-colum " style="margin: 2rem 18rem;">
+        <div class="card">
+          <div class="card-header">
+            <h3>Give Mess Attendance details</h3>
+          </div>
+          <div class="card-body">
+            <h2 class="price-text">{{ message }}</h2>
+
+            <form action="{{ url_for('submit')}}", method="post">
+                <div class="abc"><h2>Attending</h2></div>
+                <div class="abcd" ><label>Yes:</label><input class="input" type="radio" name="attendance" value="yes" ></div>
+                <div class="abcd" ><label>No:</label><input class="input" type="radio" name="attendance" value="no" ></div>
+            <button class="btn1 btn-block" type="submit">Submit</button>
+          </form>
+          </div>
+        </div>
+      </div>
+        </div>
+
+    </div>
+</section>
+
+
+
+  </body>
+  {% endblock content %}

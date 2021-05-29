@@ -1,0 +1,72 @@
+{% extends "layout.html" %}
+{% block content %}
+<body  data-spy="scroll" data-target="#myScrollspy" data-offset="80" style="text-align: center;">
+    <section id="section-1">
+  
+      <!-- Navbar-->
+      <nav class="navbar navbar-expand-xl fixed-top" style="height:100px" id="myScrollspy">
+  
+        <!-- name -->
+        <a class="navbar-brand" href="#section-1">
+          <img class="fluid" src="../static/assets/img/logo-navbar.png" style="height: 5rem;">
+        </a>
+  
+        <!-- toggler -->
+        <button class="xyz navbar-toggler custom-toggler" type="button" data-toggle="collapse"
+          data-target="#navbarSupportedContent " aria-controls="navbarSupportedContent" aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+  
+        <!-- List Items -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <h3 style="margin-right:53rem">SIGNUP</h3>
+          <ul class="navbar-nav ml-auto nav-pills active" style="margin-right:2%">
+            <li class="nav-item mx-auto" data-toggle="collapse" data-target=".navbar-collapse">
+              <a class="xyz nav-link mx-4 mt-2" href="{{url_for('home')}}">Home</a>
+            </li>
+          </ul>
+        
+  
+      </nav>
+  
+    </section>
+    <section id="section-2">
+      <div class="text-left ml-3">
+          <p class="heading-top-student" style="margin-top: 60px; margin-bottom: 0px;padding-bottom: 0px; text-align:center;">
+            Welcome Student!
+          </p>
+          
+      </div>
+  </section>
+  
+              
+        <div class="pricing-colum " style="margin: 2rem 20rem;">
+          <div class="card">
+            <div class="card-header">
+              <h3>Give your details below</h3>
+            </div>
+            <div class="card-body">
+              <h2 class="price-text">{{ message }}</h2>
+  
+              <form action="{{ url_for('submitdetails')}}", method="post">
+                  <div><label class="label-field">First Name:</label><input class="input-field" type="text" name="fname" required="required"></div>
+                  <div><label class="label-field">Mid Name:</label><input class="input-field" type="text" name="mname"  default='NULL'></div>
+                  <div><label class="label-field">Last Name:</label><input class="input-field" type="text" name="lname" required="required"></div>
+                  <div><label class="label-field">Registration No. :</label><input class="input-field" type="text" name="regno" required="required"></div>
+                  <div ><label class="label-field">Email ID:</label><input class="input-field" type="text" name="email" required="required"></div>
+                  <div ><label class="label-field">Password:</label><input class="input-field" type="password" name="password" required="required"></div>
+                  <div ><label class="label-field">Mess ID: </label><input class="input-field" type="text" name="messid" required="required"></div>
+                  <div ><label class="label-field">Phone no:  </label><input class="input-field" type="text" name="phno" required="required"></div>
+                  <div ><label class="label-field">State code:  </label><input class="input-field" type="text" name="State" required="required"></div>
+              <button class="btn1 btn-block" type="submit">Submit</button>
+            </form>
+            </div>
+          </div>
+        </div>
+          </div>
+  
+      </div>
+  </section>
+  </body>
+{% endblock content %}

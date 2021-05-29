@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+{% block content %}
+<nav class="navbar navbar-expand-xl fixed-top" style="height:100px" id="myScrollspy">
+  
+    <!-- name -->
+    <a class="navbar-brand" href="#section-1">
+      <img class="fluid" src="../static/assets/img/logo-navbar.png" style="height: 5rem;">
+    </a>
+
+    <!-- toggler -->
+    <button class="xyz navbar-toggler custom-toggler" type="button" data-toggle="collapse"
+      data-target="#navbarSupportedContent " aria-controls="navbarSupportedContent" aria-expanded="false"
+      aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- List Items -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <h2 style="margin-right:45.5rem">FESTIVE DISHES</h2>
+      <ul class="navbar-nav ml-auto nav-pills">
+        <li class="nav-item mx-auto" data-toggle="collapse" data-target=".navbar-collapse">
+          <a class="xyz nav-link mx-4 mt-2 active" href="{{url_for('home')}}">Home</a>
+        </li>
+      </ul>
+  </nav>
+  <div class="card-header" style="display:flex;justify-content: space-between; width:75%;margin:auto;margin-top:80px;border-radius: 3px;">
+    <h2>Here's a list of items offered for the festival:</h2>
+    <h2>{{ fest_name }}</h2>
+</div>
+  <div class="card-body" style="width:50%;margin: auto;">
+    <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Sp.Item ID</th>
+            <th>Sp.Item Name</th>
+            <th>Sp.Quantity</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for i in festlist %}
+          <tr>
+            <td>{{ i[0] }}</td>
+            <td> {{ i[1] }} </td>
+            <td>{{ i[2] }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      <form action="{{ url_for('foodrequest')}}" method="post">
+        <div style="text-align:center;" id="addfestival" style="margin-top:40px;">
+          <h3>Don't see your required festive dish? Add below!</h3>
+          <input type="text" name="food">
+          <div> <button type="submit" style="margin-top:10px;" class="btn btn-primary">Submit</button></div>
+        </div>
+      </form>
+    </div>
+{% endblock content %}

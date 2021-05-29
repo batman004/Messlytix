@@ -1,0 +1,91 @@
+{% extends "layout.html" %}
+{% block content %}
+<script>
+  window.onload = setInterval(clock,1000);
+function clock()
+{
+   var d = new Date();
+   var date = d.getDate();
+   var year = d.getFullYear();
+   var month = d.getMonth();
+   var monthArr = ["January", "February","March", "April", "May", "June", "July", "August", "September", "October", "November","December"];
+   month = monthArr[month];
+   document.getElementById("datetime").innerHTML=date+" "+month+", "+year+".";
+}
+</script>
+<body data-spy="scroll" data-target="#myScrollspy" data-offset="80">
+  <section id="section-1">
+
+    <!-- Navbar-->
+    <nav class="navbar navbar-expand-xl fixed-top" style="height:100px" id="myScrollspy">
+
+      <!-- name -->
+      <a class="navbar-brand" href="#section-1">
+        <img class="fluid" src="../static/assets/img/logo-navbar.png" style="height: 5rem;">
+      </a>
+
+      <!-- toggler -->
+      <button class="xyz navbar-toggler custom-toggler" type="button" data-toggle="collapse"
+        data-target="#navbarSupportedContent " aria-controls="navbarSupportedContent" aria-expanded="false"
+        aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- List Items -->
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav nav-pills">
+          <li class="nav-item mx-auto" data-toggle="collapse" data-target=".navbar-collapse">
+            <a class="xyz nav-link mx-4 mt-2" href="{{url_for('home')}}">Home</a>
+          </li>
+        </ul>
+        <div style="padding-left: 44rem;"><a href="https://messlytixdashboard.herokuapp.com/" target="_blank">
+            <button class="btn2 btn btn-light">Dashboard
+            </button></a></div>
+      </div>
+
+    </nav>
+
+  </section>
+  <section id="section-2" >
+    <div class="text-left ml-3" style="text-align: center;">
+        <h1 class="heading-top-student" style="margin-top: 60px; margin-bottom: 0px;padding-bottom: 0px; text-align: center;">
+          Hello Admin!
+        </h1>
+        <div style="text-align: center;"><span class="head-text">Today is </span><span class="head-text" id="datetime"></span></div>
+    </div>
+</section>
+      
+
+    </div>
+  </section >
+         <h1 class="heading" style="margin-left:20%">{{ new_attendance }}</h1>
+        <div class="pricing-column col-lg-8 " style="width:80%;margin-left:17%">
+          <div class="card">
+            <div class="card-header">
+              <h3>Amount of food to be cooked today</h3>
+
+            </div>
+            <div class="card-body">
+              <h2 class="price-text">Enter the details:</h2>
+              <form action="{{ url_for('predict')}}" , method="post">
+                <div class="abc"><label>Weekday:</label><input class="input" type="text" name="weekday"
+                    required="required"></div>
+                <button class="btn1 btn-block" type="submit">Submit</button>
+              </form>
+              {{prediction_text1}}
+              <br>
+              {{prediction_text2}}
+              <br>
+              {{prediction_text3}}
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+
+</body>
+{% endblock content %}
