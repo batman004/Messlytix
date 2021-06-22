@@ -24,10 +24,6 @@ cur=conn.cursor()
 
 if(cur):
     print("Connected to db")
-# user="Trkhb10mvV",           
-# password="KDKd9P5uuu",        
-# database="Trkhb10mvV"
-
 
 
 model = pickle.load(open('messmodel.pkl', 'rb'))
