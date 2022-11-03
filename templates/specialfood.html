@@ -31,7 +31,6 @@
     <table class="table table-striped">
         <thead>
           <tr>
-            <th>Sp.Item ID</th>
             <th>Sp.Item Name</th>
             <th>Sp.Quantity</th>
           </tr>
@@ -39,7 +38,6 @@
         <tbody>
           {% for i in festlist %}
           <tr>
-            <td>{{ i[0] }}</td>
             <td> {{ i[1] }} </td>
             <td>{{ i[2] }}</td>
           </tr>
@@ -49,7 +47,11 @@
       <form action="{{ url_for('foodrequest')}}" method="post">
         <div style="text-align:center;" id="addfestival" style="margin-top:40px;">
           <h3>Don't see your required festive dish? Add below!</h3>
-          <input type="text" name="food">
+          <input type="text" name="food" placeholder="food item">
+          <br>
+          <input type="text" name="festival" placeholder="festival">
+          <br>
+          <input type="text" name="amount" placeholder="quantity">
           <div> <button type="submit" style="margin-top:10px;" class="btn btn-primary">Submit</button></div>
         </div>
       </form>

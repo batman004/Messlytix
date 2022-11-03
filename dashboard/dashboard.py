@@ -155,7 +155,7 @@ app.layout = html.Div(style={'backgroundColor': colors['background']},children=[
                                 ],
                         
                         'layout': {
-                            'title': 'How Foodylytics will affect food loss',
+                            'title': 'How Messlytix will affect food loss',
 
                             'xaxis' : dict(
                                 title='WEEK NO',
@@ -191,4 +191,4 @@ app.layout = html.Div(style={'backgroundColor': colors['background']},children=[
             
 
 if __name__ == '__main__':
-    app.run_server(debug=True)
+    app.run_server(debug=True, port =8000)
